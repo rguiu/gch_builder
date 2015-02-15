@@ -4,8 +4,8 @@ Needs a .env file.
 
 For example:
 
-    REPO=git@bitbucket.org:rguiu/???????.git
-    DIR=repo3
+    REPO=git@github.com:rguiu/hashcode2014trial.git
+    DIR=repo
     SOLUTIONS_DIR=solutions
     BUILD="mvn clean install"
     EXEC="java -jar target/2014trial-1.0-SNAPSHOT-jar-with-dependencies.jar"
