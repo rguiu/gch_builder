@@ -1,0 +1,19 @@
+{
+  "name": "AutoEvaluator",
+  "version": "1.0.0",
+  "description": "Fetch new versions of competition code and evaluates them",
+  "main": "index.js",
+  "dependencies": {
+    "config": "^1.10.0",
+    "redis": "^0.12.1",
+    "shelljs": "^0.3.0",
+    "watch": "^0.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node demo.js",
+    "tags": "node lib/tags.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
