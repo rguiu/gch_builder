@@ -1,3 +1,4 @@
 tags: node lib/tags.js 
-watch: node lib/watch.js
-web: http-server build -p 8000
+solution: node lib/solution.js 
+scorer: node lib/data_gen.js 
+web: http-server web -p 8000

@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+		<link rel="stylesheet" type="text/css" href="/dynatable/jquery.dynatable.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/dynatable/vendor/bootstrap.min.css" media="screen" />
+
+		<script type="text/javascript" src="/dynatable/vendor/jquery-1.7.2.min.js" ></script>
+		<script type="text/javascript" src="/dynatable/jquery.dynatable.js" ></script>
+		<script>
+			(function worker() {
+				var nocache = new Date().getTime();
+				$.ajax({
+					url: 'scores.json?cache='+nocache,
+					success: function(data){
+						console.log("reloading");
+						$('#dtable').dynatable({
+							dataset: {
+							records: data
+							},readers: {
+								'score': function(el, record) {
+									 console.log(el.innerHTML);
+									 return Number(el.innerHTML) || 0;
+								}
+							}, features: {
+							    paginate: false,
+							    search: false,
+							    recordCount: false,
+							    perPageSelect: false,
+							    pushState: false
+							}
+						});
+						setTimeout(worker, 5000);
+					}
+				});
+			})();
+		</script>
+	</head>
+	<body>
+		<table id="dtable" class="table table-striped">
+		  <thead>
+		    <th>tag</th>
+		    <th>score</th>
+		    <th>time</th>
+		    <th>directory</th>
+		  </thead>
+		  <tbody>
+		  </tbody>
+		</table>
+	</body>
+</html>

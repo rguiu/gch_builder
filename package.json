@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "config": "^1.10.0",
+    "process": "^0.10.0",
     "redis": "^0.12.1",
     "shelljs": "^0.3.0",
     "watch": "^0.13.0"
