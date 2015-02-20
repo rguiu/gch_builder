@@ -9,6 +9,8 @@
 		<script type="text/javascript" src="/dynatable/jquery.dynatable.js" ></script>
 		<script>
 			var timeToReadable = function(millis) {
+				if (isNaN(millis)) return "(...)"
+				console.log(Number(millis));
 				millis = Math.round(millis);
 				var x =  Math.floor(millis / 1000);
 				if (x==0) return Math.abs(millis) + " millis";
@@ -26,7 +28,8 @@
                             console.log("reloading");
                             var dynatable = $('#dtable').dynatable({
                                 dataset: {
-                                   records: data.records
+                                   records: data.records,
+                                   sortsKeys: { 'records.score': 1 }
                             	},writers: {
                                 	'score': function(el, record) {
                                     	return Number(el.score) || 0;
@@ -34,18 +37,22 @@
 	                                'time': function(el, record) {
                                     	return timeToReadable(el.time);
 	                                },
+                           	 	}, readers: {
+                                	
                            	 	}, 
                            	 	features: {
                                        paginate: false,
                                        search: false,
                                        recordCount: false,
                                        perPageSelect: false,
-                                       pushState: false
+                                       pushState: false,
+                                       sort: true
                             	}
                             }).data("dynatable");
 //                            console.log(dynatable);
 							dynatable.settings.dataset.originalRecords =  data.records;
                             dynatable.process();
+                            $("#dtable tr:contains('(...)')").css("background", "#cc6666");
                         	setTimeout(worker, 5000);
      					}
                 });
@@ -56,7 +63,7 @@
 		<table id="dtable" class="table table-striped">
 		  <thead>
 		    <th data-dynatable-column="tag">tag</th>
-		    <th data-dynatable-column="score">score</th>
+		    <th data-dynatable-column="score" data-dynatable-sorts="records.score">score</th>
 		    <th data-dynatable-column="time">time</th>
 		    <th data-dynatable-no-sort="true">directory</th>
 		  </thead>
