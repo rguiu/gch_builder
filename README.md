@@ -9,10 +9,12 @@ For example:
     SOLUTIONS_DIR=solutions
     BUILD="mvn clean install"
     EXEC="java -jar target/2014trial-1.0-SNAPSHOT-jar-with-dependencies.jar"
-    SOURCES="target/2014trial-1.0-SNAPSHOT-sources.jar"
-    RESULT="target/solution.txt"
-    SCORE="target/score.txt"
+    SOURCES="2014trial-1.0-SNAPSHOT-sources.jar"
+    RESULT="solution.txt"
     TAG_PREFIX="TRIAL2014_"
+    BUILD_DIR="target"
+    SCORE="score.txt"
+
 
 To use, we need Redis installed. Node, and npm.
 
